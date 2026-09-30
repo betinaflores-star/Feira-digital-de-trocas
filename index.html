@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+ 
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feira Digital de Trocas</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+      
+
+        <h1>Feira Digital de Trocas</h1>
+
+        <p>
+            Cadastre itens para troca ou doação, pesquise, filtre, reserve e
+            mantenha os dados salvos no navegador.
+        </p>
+
+        <p>
+            Atalho: pressione <strong>/</strong> para focar a pesquisa e
+            <strong>Esc</strong> para limpá-la.
+        </p>
+    </header>
+
+    <div id="mensagem" aria-live="polite"></div>
+
+
+    <section>
+
+        <h2>Cadastrar item</h2>
+
+        <form id="formItem" novalidate>
+
+            <div>
+
+                <label for="nome">Nome do item *</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    maxlength="60"
+                    placeholder="Ex.: Livro de JavaScript"
+                >
+
+            </div>
+
+            <div>
+                <label for="categoria">Categoria *</label>
+
+                <select id="categoria" name="categoria">
+                    <option value="">Selecione</option>
+                    <option value="Livros">Livros</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Roupas">Roupas</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Esportes">Esportes</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="estado">Estado de conservação *</label>
+
+                <select id="estado" name="estado">
+                    <option value="">Selecione</option>
+                    <option value="Novo">Novo</option>
+                    <option value="Bom">Bom</option>
+                    <option value="Usado">Usado</option>
+                    <option value="Precisa de reparo">Precisa de reparo</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="tipo">Disponibilidade *</label>
+
+                <select id="tipo" name="tipo">
+                    <option value="">Selecione</option>
+                    <option value="Troca">Troca</option>
+                    <option value="Doação">Doação</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="responsavel">Responsável *</label>
+
+                <input
+                    type="text"
+                    id="responsavel"
+                    name="responsavel"
+                    maxlength="40"
+                    placeholder="Nome do responsável"
+                >
+            </div>
+
+            <div>
+                <label for="descricao">Descrição *</label>
+                <textarea
+                    id="descricao"
+                    name="descricao"
+                    rows="4"
+                    maxlength="180"
+                    placeholder="Descreva o item de forma breve."
+                ></textarea>
+
+            </div>
+
+        
+            <button type="submit">
+                Adicionar item
+            </button>
+
+            <button type="button" id="btnExemplos">
+                Carregar exemplos
+            </button>
+
+            <button type="button" id="btnLimparTudo">
+                Limpar tudo
+            </button>
+
+        </form>
+
+    </section>
+
+    <section>
+
+        <h2>Resumo</h2>
+
+        <div>
+            <div>
+                <span>Total</span>
+                <strong id="totalItens">0</strong>
+            </div>
+
+            <div>
+                <span>Disponíveis</span>
+                <strong id="totalDisponiveis">0</strong>
+            </div>
+
+            <div>
+                <span>Reservados</span>
+                <strong id="totalReservados">0</strong>
+            </div>
+
+            <div>
+                <span>Doações</span>
+                <strong id="totalDoacoes">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>Pesquisa e filtros</h2>
+
+        <div>
+
+            <div>
+                <label for="pesquisa">Pesquisar</label>
+
+                <input
+                    type="search"
+                    id="pesquisa"
+                    placeholder="Nome ou descrição"
+                >
+            </div>
+
+            <div>
+                <label for="filtroCategoria">Categoria</label>
+
+                <select id="filtroCategoria">
+                    <option value="Todos">Todas</option>
+                    <option value="Livros">Livros</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Roupas">Roupas</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Esportes">Esportes</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="filtroTipo">Tipo</label>
+
+                <select id="filtroTipo">
+                    <option value="Todos">Todos</option>
+                    <option value="Troca">Troca</option>
+                    <option value="Doação">Doação</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="filtroSituacao">Situação</label>
+
+                <select id="filtroSituacao">
+                    <option value="Todos">Todos</option>
+                    <option value="Disponível">Disponíveis</option>
+                    <option value="Reservado">Reservados</option>
+                </select>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div>
+            <h2>Itens cadastrados</h2>
+            <span id="quantidadeResultados">0 resultado(s)</span>
+        </div>
+
+        
+        <div id="listaItens"></div>
+
+        <div id="estadoVazio">
+            Nenhum item cadastrado.
+        </div>
+
+    </section>
+
+    <footer>
+        Demonstração completa de HTML, CSS, JavaScript, eventos, DOM, funções e Local Storage.
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
